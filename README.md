@@ -1,4 +1,4 @@
-# TODO Finder
+# TODO lister
 
 This is a command-line tool written in Go that scans a given directory for TODO comments in the code. It generates a CSV file with the file name and line number of each TODO found.
 
