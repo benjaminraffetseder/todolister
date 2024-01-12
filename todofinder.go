@@ -34,7 +34,7 @@ func main() {
 	defer writer.Flush()
 
 	// Write header
-	writer.Write([]string{"File", "TODO"})
+	writer.Write([]string{"File", "TODO", "Notes"}) // Added "Notes" column
 
 	fmt.Println("Starting to scan files...")
 
@@ -75,7 +75,7 @@ func main() {
 				}
 				if strings.Contains(line, "TODO: ") {
 					relativePath, _ := filepath.Rel(folderToScan, path)
-					writer.Write([]string{relativePath, fmt.Sprintf("Line %d: %s", lineNumber, strings.TrimSpace(line))})
+					writer.Write([]string{relativePath, fmt.Sprintf("Line %d: %s", lineNumber, strings.TrimSpace(line)), ""}) // Added empty "Notes" cell
 					todoCount++
 				}
 				lineNumber++
@@ -92,7 +92,7 @@ func main() {
 	}
 
 	// Write total count
-	writer.Write([]string{"Total", fmt.Sprintf("%d TODOs found", todoCount)})
+	writer.Write([]string{"Total", fmt.Sprintf("%d TODOs found", todoCount), ""}) // Added empty "Notes" cell
 
 	fmt.Println("Finished scanning all files.")
 }
